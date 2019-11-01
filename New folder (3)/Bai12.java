@@ -10,9 +10,9 @@ import java.util.Scanner;
 
 /**
  *
- * @author nntam
+ * @author daoan
  */
-public class Bai13 {
+public class Bai12 {
     public static Scanner in = new Scanner(System.in);
     public static int a[][] = new int[1001][1001];
     public static int n, m;
@@ -24,19 +24,9 @@ public class Bai13 {
 
     public static void init() {
         n = in.nextInt();
-        in.nextLine();
         for (int i = 1; i <= n; i++) {
-            Arrays.fill(a[i], 0);
-        }
-        for (int i = 1; i <= n; i++) {
-            String s = in.nextLine();
-            String res[] = s.split(" ");
-            m = res.length;
-            for (int j = 0; j < m; j++) {
-                int x = i;
-                int y = Integer.parseInt(res[j]);
-                a[x][y] = 1;
-                a[y][x] = 1;
+            for (int j = 1; j <= n; j++) {
+                a[i][j] = in.nextInt();
             }
         }
     }
@@ -44,7 +34,9 @@ public class Bai13 {
     public static void solve() {
         for (int i = 1; i <= n; i++) {
             for (int j = 1; j <= n; j++) {
-                System.out.print(a[i][j] + " ");
+                if (a[i][j] == 1) {
+                    System.out.print(j + " ");
+                }
             }
             System.out.println("");
         }

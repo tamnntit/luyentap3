@@ -65,8 +65,11 @@ public class Bai14 {
             }
         }
         for (int i = 0; i < id-1; i++) {
+            int x = bfs[i];
             for (int j = i+1; j < id; j++) {
-                b[bfs[i]][bfs[j]] = 1;
+                int y = bfs[j];
+                b[x][y] = 1;
+                b[y][x] = 1;
             }
         }
     }

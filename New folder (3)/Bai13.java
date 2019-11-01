@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author nntam
+ * @author daoan
  */
 public class Bai13 {
     public static Scanner in = new Scanner(System.in);

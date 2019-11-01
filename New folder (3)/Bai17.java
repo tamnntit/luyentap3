@@ -6,27 +6,36 @@
 package contest_3;
 
 import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Scanner;
 
 /**
  *
- * @author nntam
+ * @author daoan
  */
-public class Bai10 {
+public class Bai17 {
 
     public static Scanner in = new Scanner(System.in);
+    public static boolean cx[] = new boolean[1001];
     public static int a[][] = new int[1001][1001];
-    public static int n, m;
+    public static int count, m, n, start;
 
     public static void main(String[] args) {
-        init();
-        solve();
+        int t = in.nextInt();
+        while (t-- > 0) {
+            init();
+            Bfs(start);
+            System.out.println("");
+        }
     }
 
     public static void init() {
         n = in.nextInt();
         m = in.nextInt();
+        start = in.nextInt();
         for (int i = 1; i <= n; i++) {
+            cx[i] = true;
             Arrays.fill(a[i], 0);
         }
         for (int i = 1; i <= m; i++) {
@@ -37,15 +46,20 @@ public class Bai10 {
         }
     }
 
-    public static void solve() {
-        for (int i = 1; i <= n; i++) {
-            for (int j = 1; j <= n; j++) {
-                if (a[i][j] == 1) {
-                    System.out.print(j + " ");
+    public static void Bfs(int u) {
+        Queue<Integer> qu = new LinkedList();
+        qu.add(u);
+        cx[u] = false;
+        while(!qu.isEmpty()){
+            int v = qu.peek();
+            System.out.print(v + " ");
+            qu.poll();
+            for (int i = 1; i <= n; i++) {
+                if(cx[i] && a[v][i] == 1){
+                    qu.add(i);
+                    cx[i] = false;
                 }
             }
-            System.out.println("");
         }
     }
-
 }
